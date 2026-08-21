@@ -35,10 +35,25 @@ int main() {
 
             cout << "Timeout occurred.\n";
             cout << "Retransmitting Frame " << frame << "...\n";
+
+            lost = 1;
         }
         else {
+            int receiveTime;
+
+            if (timeout > 1)
+                receiveTime = rand() % (timeout - 1) + 1;
+            else
+                receiveTime = 1;
+
+            for (int i = 1; i <= receiveTime; i++) {
+                cout << "Timer: " << i << " second(s)\n";
+                this_thread::sleep_for(chrono::seconds(1));
+            }
+
             cout << "Frame " << frame << " received successfully.\n";
             cout << "ACK " << frame << " received.\n";
+            cout << "Timer stopped.\n";
 
             frame++;
         }
@@ -48,41 +63,3 @@ int main() {
 
     return 0;
 }
-/*Enter number of frames: 5
-Enter timeout value in seconds: 3
-
-Sending Frame 1...
-Timer started.
-Frame 1 lost!
-Timer: 1 second(s)
-Timer: 2 second(s)
-Timer: 3 second(s)
-Timeout occurred.
-Retransmitting Frame 1...
-
-Sending Frame 1...
-Timer started.
-Frame 1 received successfully.
-ACK 1 received.
-
-Sending Frame 2...
-Timer started.
-Frame 2 received successfully.
-ACK 2 received.
-
-Sending Frame 3...
-Timer started.
-Frame 3 received successfully.
-ACK 3 received.
-
-Sending Frame 4...
-Timer started.
-Frame 4 received successfully.
-ACK 4 received.
-
-Sending Frame 5...
-Timer started.
-Frame 5 received successfully.
-ACK 5 received.
-
-Transmission completed successfully.*/
