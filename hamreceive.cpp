@@ -90,3 +90,29 @@ int main()
 
     return 0;
 }
+/*Enter received codeword: 11100010100
+
+R1
+R1 D3 D5 D7 D9 D11
+0 1 1 0 1 1 
+Set R1 = 0
+
+R2
+R2 D3 D6 D7 D10 D11
+0 1 0 0 1 1 
+Set R2 = 1
+
+R4
+R4 D5 D6 D7
+0 1 0 0 
+Set R4 = 1
+
+R8
+R8 D9 D10 D11
+0 1 1 1 
+Set R8 = 1
+
+Word : 0111
+Decimal equivalent = 14
+Error position is greater than codeword length.
+Multiple errors or invalid codeword.*/
